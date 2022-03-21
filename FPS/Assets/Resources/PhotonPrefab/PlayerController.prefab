@@ -505,7 +505,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.5, y: 0}
-  m_SizeDelta: {x: 1, y: 20}
+  m_SizeDelta: {x: 2, y: 20}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &4697466123167833227
 CanvasRenderer:
@@ -580,7 +580,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: 20, y: 1}
+  m_SizeDelta: {x: 20, y: 2}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &3473542869970235227
 CanvasRenderer:
@@ -1207,7 +1207,6 @@ MonoBehaviour:
   items:
   - {fileID: 6512894757379661483}
   - {fileID: 8798292033861807901}
-  scoreBoard: {fileID: 0}
 --- !u!1 &8941439888877827448
 GameObject:
   m_ObjectHideFlags: 0

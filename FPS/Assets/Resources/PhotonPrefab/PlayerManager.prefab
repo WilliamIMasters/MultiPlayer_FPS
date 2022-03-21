@@ -66,3 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb834660b69299647a353c1f28164610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreBoard: {fileID: 0}
+  PlayerDied:
+    m_PersistentCalls:
+      m_Calls: []

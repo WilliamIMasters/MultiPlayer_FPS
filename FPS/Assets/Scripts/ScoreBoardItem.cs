@@ -7,12 +7,12 @@ using UnityEngine;
 public class ScoreBoardItem : MonoBehaviour
 {
     public TMP_Text usernameText;
-    public TMP_Text killsText;
-    public TMP_Text deathsText;
+    public TMP_Text scoreText;
 
-    public void Initialize(Player player)
+    public void Initialize(Player player, int score)
     {
         usernameText.text = player.NickName;
+        scoreText.text = score.ToString();
     }
 
 }

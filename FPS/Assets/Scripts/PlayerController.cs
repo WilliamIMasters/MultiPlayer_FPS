@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamagable
 
     [SerializeField] Item[] items;
 
-    [SerializeField] ScoreBoard scoreBoard;
-
     int itemIndex;
     int prevItemIndex = -1;
 
@@ -41,20 +39,21 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamagable
         PV = GetComponent<PhotonView>();
 
         playerManager = PhotonView.Find((int)PV.InstantiationData[0]).GetComponent<PlayerManager>();
-        //scoreBoard = GameObject.FindGameObjectWithTag("ScoreBoard")?.GetComponent<ScoreBoard>();
-        //scoreBoard.hide();
     }
 
     private void Start()
     {
         if(PV.IsMine) {
             EquipItem(0);
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else {
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
             Destroy(ui);
         }
+
+
     }
 
     private void Update()
@@ -67,7 +66,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamagable
         move();
         jump();
         handleSwappingWeapons();
-        scoreBoardControlls();
 
 
         if (Input.GetMouseButtonDown(0)) { // use heald item
@@ -83,14 +81,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamagable
     
     }
 
-    void scoreBoardControlls()
-    {
-        if(Input.GetKeyDown(KeyCode.Tab)) {
-            //scoreBoard.show();
-        } else if (Input.GetKeyUp(KeyCode.Tab)) {
-            //scoreBoard.hide();
-        }
-    }
     void handleSwappingWeapons()
     {
         for (int i = 0; i < items.Length; i++) {
