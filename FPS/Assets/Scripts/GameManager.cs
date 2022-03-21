@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
         scoreBoard.ClearBoard();
         
         foreach(Player p in PhotonNetwork.PlayerList) {
+            if (!playerScores.ContainsKey(p.UserId)) {
+                playerScores[p.UserId] = 0;
+            }
             scoreBoard.AddScoreboardItem(p, playerScores[p.UserId]);
         }
         //scoreBoard.UpdateScoreBoard(playerScores);
