@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class ScoreBoardController : MonoBehaviour
 {
+
+    public static ScoreBoardController Instance;
+
     [SerializeField]
     GameObject scoreboard;
 
-    /*private void Awake()
+    private void Awake()
     {
-        scoreboard = GetComponent<ScoreBoard>();
-    }*/
+        if(Instance) {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+        Instance = this;
+
+    }
 
     // Update is called once per frame
     void Update()

@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerTester : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class GameManagerTester : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L)) {
             gm.increasePlayerScore(PhotonNetwork.LocalPlayer);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K)) {
+            SceneManager.LoadScene(2);
         }
     }
 }
