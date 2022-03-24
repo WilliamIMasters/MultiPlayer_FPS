@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     ScoreBoard scoreBoard;
 
     [SerializeField]
-    Player player;
+    public Player player;
 
     PhotonView PV;
     GameObject controller;

@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     PlayerManager localPlayerManager;
 
+    private int currentRound;
+    int[] levelPlaylistAll;
+
     private void Awake()
     {
         if (Instance) {
@@ -68,13 +71,20 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (scene.buildIndex == 1) { // pregame lobby
 
-            // Generate/get array of level build index for playlist of maps to be played
-            // Randomly order list
-            // load first level
-
-
-
             CreateLocalPlayerManager();
+
+            // Generate/get array of level build index for playlist of maps to be played
+            levelPlaylistAll = new int[] { 2, 3 };
+            // Randomly order list
+            
+            // host loads first level
+            currentRound = 0;
+            if(PV.Owner == PhotonNetwork.LocalPlayer) {
+                SceneManager.LoadScene(levelPlaylistAll[currentRound]);
+            }
+
+
+            
 
             // Temporary
             //SceneManager.LoadScene(2);
@@ -182,10 +192,22 @@ public class GameManager : MonoBehaviourPunCallbacks
                     lastAliveFound = players[i];
                 }
             }
+
+            // Player won round
             if(aliveTally == 1 && lastAliveFound != null) {
-                Debug.LogError(lastAliveFound.nickName + " is the last alive");
+                Debug.Log(lastAliveFound.nickName + " is the last alive");
+                increasePlayerScore(lastAliveFound.player);
+                LoadNextLevel();
             }
             
+        }
+    }
+
+    void LoadNextLevel()
+    {
+        currentRound++;
+        if (PV.Owner == PhotonNetwork.LocalPlayer) {
+            SceneManager.LoadScene(levelPlaylistAll[currentRound]);
         }
     }
 
