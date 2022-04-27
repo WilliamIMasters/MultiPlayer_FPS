@@ -206,6 +206,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     void LoadNextLevel()
     {
         currentRound++;
+
+        if (currentRound <= levelPlaylistAll.Length) {
+
+        }
+
         if (PV.Owner == PhotonNetwork.LocalPlayer) {
             SceneManager.LoadScene(levelPlaylistAll[currentRound]);
         }

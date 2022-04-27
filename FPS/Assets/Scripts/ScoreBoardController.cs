@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ScoreBoardController : MonoBehaviour
@@ -9,6 +10,10 @@ public class ScoreBoardController : MonoBehaviour
 
     [SerializeField]
     GameObject scoreboard;
+    [SerializeField]
+    GameObject endGameLeaderboard;
+    [SerializeField]
+    TMP_Text endGameLeaderboardWinnerText;
 
     private void Awake()
     {
@@ -32,4 +37,6 @@ public class ScoreBoardController : MonoBehaviour
             scoreboard.SetActive(false);
         }
     }
+
+
 }
